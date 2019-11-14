@@ -6,8 +6,8 @@
 echo "Welcome to Gambler Simulation"
 GAMBLER_STAKE=100;
 GAMBLER_BET=1;
-totalMonth=1;
-totalDaysInMonth=20;
+totalMonth=5;
+totalDaysInMonth=3;
 totalAmount=0;
 percentage=50;
 won=0
@@ -44,7 +44,10 @@ totalAmount=$(( $totalAmount + $dailyAmount ))
 betChart["Days"$days]=$(($dayStake - 100 ))
 DaysChart["Days"$days]=$((totalAmount))
 done
-
+if [[ $totalAmount -lt 0  ]]
+then 
+	break
+fi
 done
 count
  echo  ${betChart[@]}
@@ -52,8 +55,8 @@ count
  echo ${DaysChart[@]}
 echo ${!DaySChart[@]}
 
-luckiest=$( printf "%s\n" ${DaysChart[@]} | sort -nr | head -1 )
-unluckiest=$( printf "%s\n" ${DaysChart[@]} | sort -nr | tail -1 )
+luckiest=$(  ${DaysChart[@]} | sort -nr | head -1 )
+unluckiest=$(  ${DaysChart[@]} | sort -nr | tail -1 )
 lucky
  }
 function lucky(){
