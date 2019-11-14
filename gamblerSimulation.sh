@@ -6,6 +6,19 @@
 
 
 echo "Welcome to Gambler Simulation"
-GAMBLERSTAKE=100;
-GAMBLERBET=1;
+GAMBLER_STAKE=100;
+GAMBLER_BET=1;
+
+function bet(){
+	check=$((RANDOM % 2 ))
+	if [[ $check -eq 1 ]]
+	then
+		return 1;
+	else
+		return 0;
+	fi
+}
+
+bet
+
 
