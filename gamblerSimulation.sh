@@ -38,7 +38,7 @@ do
 			dayStake=$(( $dayStake - $GAMBLER_BET));
 		fi
 	done
-echo $dayStake
+#echo $dayStake
 dailyAmount=$(( $dayStake ))
 totalAmount=$(( $totalAmount + $dailyAmount ))
 betChart["Days"$days]=$(($dayStake - 100 ))
@@ -50,23 +50,23 @@ then
 fi
 done
 count
- echo  ${betChart[@]}
- echo	${!betChart[@]}
- echo ${DaysChart[@]}
-echo ${!DaySChart[@]}
+ ${betChart[@]}
+ ${!betChart[@]}
+ ${DaysChart[@]}
+ ${!DaySChart[@]}
 
-luckiest=$(  ${DaysChart[@]} | sort -nr | head -1 )
-unluckiest=$(  ${DaysChart[@]} | sort -nr | tail -1 )
+luckiestDay=$(  ${DaysChart[@]} | sort -nr | head -1 )
+unluckiestDay=$(  ${DaysChart[@]} | sort -nr | tail -1 )
 lucky
  }
 function lucky(){
 
 for data in "${!DaysChart[@]}"
 do
-if [[ ${DaysChart[$data]} -eq $luckiest ]]
+if [[ ${DaysChart[$data]} -eq $luckiestDay ]]
 then
 		return $data
-elif [[${DaysChart[$data]} -eq $unluckiest ]]
+elif [[${DaysChart[$data]} -eq $unluckiestDay ]]
 then
    return $data
 fi
